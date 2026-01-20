@@ -9,7 +9,7 @@ app.use(express.json());
 
 function runClaude(prompt) {
   return new Promise((resolve, reject) => {
-    const child = spawn('claude', ['-p', prompt, '--print'], {
+    const child = spawn('claude', ['-p', prompt, '--print', '--dangerously-skip-permissions'], {
       stdio: ['ignore', 'pipe', 'pipe'],
       env: { ...process.env, TERM: 'dumb', NO_COLOR: '1' }
     });
